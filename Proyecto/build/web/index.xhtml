@@ -1,0 +1,117 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>CONSUMO</title>
+    </h:head>
+    <h:body style="background: coral">
+        <center>
+            UNIVERSIDAD DE GUAYAQUIL <br/>
+            FACULTAD DE INGENERIA INDUSTRIAL
+        </center>
+
+        <h:form>
+            <br></br>
+            <table align="center">
+                <tr>
+                    <td>
+                        Cedula:
+                    </td>
+                    <td>
+                        <h:inputText id="Cedula" value="#{consumirbeans.cedula}"></h:inputText>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h:outputLabel value="Periodo Lectivo:" />
+
+                    </td>
+
+
+                    <td>
+                        <h:selectOneMenu value="#{consumirbeans.plectivo}">
+                                <f:selectItem itemLabel="2013 - 2014 CI" itemValue="15120001" />
+                                <f:selectItem itemLabel="2013 - 2014 CII" itemValue="15120002" />
+
+                            </h:selectOneMenu>
+
+                        
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" align="center">
+                        <p:commandButton value="CONSULTAR NOTA" actionListener="#{consumirbeans.Buscar()}" update=":reporte" >
+                        </p:commandButton>
+                    </td>                     
+                </tr>                
+            </table>
+            <br/>
+        </h:form>
+
+        <h:form id="reporte">
+            <table>
+                <tr>
+                    <td>
+                        NOMBRE ESTUDIANTE: 
+                    </td> 
+                    <td>
+                        <p:inputText id="nombre" value="#{consumirbeans.alunmo}"
+                                     size="40" disabled="true"  />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        NOMBRE CARRERA:  
+                    </td>
+                    <td>
+                        <p:inputText id="carrera" value="#{consumirbeans.carrera}"
+                                     size="70" disabled="true"  />   
+                    </td>
+
+                </tr>
+            </table>
+            <p:separator />
+            <p:dataTable id="notas" var="notas" value="#{consumirbeans.nota}"
+                         rows="10" style="margin-bottom: 20px; font-size: x-small">
+                <p:column headerText="Materia" style="width: 10px; text-aligin: center" >
+                    <h:outputText value="#{notas.nom_materia}"></h:outputText>
+                </p:column>
+
+                <p:column headerText="I Nota academica" style="width: 10px; text-aligin: center" >
+                    <h:outputText value="#{notas.primer_academica}"></h:outputText>
+                </p:column>
+                <p:column headerText="I Evaluacion" style="width: 10px; text-aligin: center" >
+                    <h:outputText value="#{notas.primer_evaluacion}"></h:outputText>
+                </p:column>
+                <p:column headerText="Promedio I parcial" style="width: 10px; text-aligin: center" >
+                    <h:outputText value="#{notas.primer_promedio}"></h:outputText>
+                </p:column>
+                <p:column headerText="II Nota academica" style="width: 10px; text-aligin: center" >
+                    <h:outputText value="#{notas.segundo_academica}"></h:outputText>
+                </p:column>
+                <p:column headerText="II Evaluacion" style="width: 10px; text-aligin: center" >
+                    <h:outputText value="#{notas.segundo_evaluacion}"></h:outputText>
+                </p:column>
+                <p:column headerText="Promedio II parcial" style="width: 10px; text-aligin: center" >
+                    <h:outputText value="#{notas.segundo_promedio}"></h:outputText>
+                </p:column>
+                <p:column headerText="Promedio Final" style="width: 10px; text-aligin: center" >
+                    <h:outputText value="#{notas.promedio}"></h:outputText>
+                </p:column>
+
+            </p:dataTable>
+
+
+
+        </h:form>
+        <center>
+            &copy; Robinson Panta Vera - Andreina Lozada - Jonathan Alvarez - Mayra Pluas
+        </center>
+
+
+    </h:body>
+</html>
+
